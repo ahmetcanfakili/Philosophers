@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 16:24:41 by afakili           #+#    #+#             */
-/*   Updated: 2022/08/18 16:24:41 by afakili          ###   ########.fr       */
+/*   Created: 2022/08/21 00:16:57 by afakili           #+#    #+#             */
+/*   Updated: 2022/08/21 00:16:57 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int argc, char **argv) 
+int	ft_atoi(const char *str)
 {
-    t_philo philo;
-    
-    if (argc > 1)
-    {
-        philo.number_of_philosophers = ft_atoi(argv[1]);
-        philo.time_to_die = ft_atoi(argv[2]);
-        philo.time_to_eat = ft_atoi(argv[3]);
-        philo.time_to_sleep = ft_atoi(argv[4]);
-        philo.number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
-    }
-    else
-        printf("Error!\n");
-    return 0;
+	int	i;
+	int	s;
+	int	res;
+
+	i = 0;
+	s = 1;
+	res = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			s = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (res * 10) + (str[i] - 48);
+		i++;
+	}
+	return (res * s);
 }
+
