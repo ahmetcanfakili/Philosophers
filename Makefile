@@ -1,7 +1,7 @@
-NAME = philosophers
+NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -pthread
-SRCS = main.c
+CFLAGS = -Wall -Wextra -Werror
+SRCS = main.c utils.c time.c
 
 OBJ = $(SRCS:.c=.o)
 
