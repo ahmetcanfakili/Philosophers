@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 17:28:37 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/01 15:39:22 by afakili          ###   ########.fr       */
+/*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
+/*   Updated: 2022/09/01 16:22:18 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long long current_time_in_ms(void)
+void  get_data(int argc, char **argv)
 {
-    long long time;
-    struct timeval current_time;
-    gettimeofday(&current_time, 0);
-    time =(current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-    return (time);
+	t_data *data;
+    data = malloc(sizeof(t_data));
+    if (!data)
+        printf("Malloc Error!");
+    data->number_of_forks = ft_atoi(argv[1]);
+    data->time_to_die = ft_atoi(argv[2]);
+    data->time_to_eat = ft_atoi(argv[3]);
+    data->time_to_sleep = ft_atoi(argv[4]);
+
+	if (argc == 5)
+		data->number_of_eat = 0;
+	
+	if (argc == 6)
+		data->number_of_eat = ft_atoi(argv[5]);
 }

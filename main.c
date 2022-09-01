@@ -12,37 +12,28 @@
 
 #include "philosophers.h"
 
-int g=0;
-
-void *func(void *arg)
+int main(int argc, char **argv)
 {
-    int *id = (int *)arg; 
-    printf("ID: %d\n", *id);
-    return (0);
-}
-
-int main(int argc, char **argv) 
-{
-    pthread_t thread_id;
-    t_philo philo;
-
-    for (int i=0; i<3; i++)
-        pthread_create(&thread_id, NULL, func, (void*)&thread_id);
-    pthread_exit(NULL);
-
-    if (argc > 1)
+    if (!(argc == 5 || argc == 6))
     {
-        philo.number_of_philosophers = ft_atoi(argv[1]); // == forks_count
-        philo.time_to_die = ft_atoi(argv[2]); //ms 
-        philo.time_to_eat = ft_atoi(argv[3]); //yemek yerken geçen süre
-        philo.time_to_sleep = ft_atoi(argv[4]); //uykuda geçen süre
-        philo.number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);//(optional)kaç kaç kez yemek yiyeceği-belirtilmezse ilk filozof ölünce program biter. 
+        printf("Argument Error1");
+        exit(1);
     }
-    else
-        printf("Error!\n");
+    get_data(argc, argv);
+    
+
+
+
 }
 
 /*
+args:
+fork die eat sleep (max_eat)
+
+
+
+
+
 eat
 sleep
 think
@@ -54,7 +45,5 @@ timestamp_in_ms X is sleeping
 timestamp_in_ms X is thinking
 timestamp_in_ms X died
 
-philo == thread
-fork == mutex
-
 */
+
