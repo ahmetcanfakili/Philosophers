@@ -1,7 +1,7 @@
 NAME = philo
 CC = gcc -g
 CFLAGS = -Wall -Wextra -Werror
-SRCS = main.c utils.c time.c data.c
+SRCS = main.c utils.c time.c get.c
 
 OBJ = $(SRCS:.c=.o)
 

@@ -42,7 +42,7 @@ long long	ft_atoll(const char *str)
 {
 	int	i;
 	int	s;
-	int	res;
+	long long	res;
 
 	i = 0;
 	s = 1;

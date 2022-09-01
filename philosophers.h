@@ -21,24 +21,18 @@
 
 typedef struct s_data
 {
-    int number_of_forks;
+    int             number_of_forks;
     pthread_mutex_t *forks;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int number_of_eat;
+    int             time_to_die;
+    int             time_to_eat;
+    int             time_to_sleep;
+    int             number_of_eat;
+    long long       start_time_in_ms;
 } t_data;
-
-typedef struct s_philo
-{
-    int i;
-
-
-} t_philo;
 
 long long current_time_in_ms(void);
 int	ft_atoi(const char *str);
 long long	ft_atoll(const char *str);
-void get_data(int argc, char **argv);
+t_data *get_data(int argc, char **argv);
 
 #endif
