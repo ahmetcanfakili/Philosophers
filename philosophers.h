@@ -32,7 +32,6 @@ typedef struct s_data
 
 long long current_time_in_ms(void);
 int	ft_atoi(const char *str);
-long long	ft_atoll(const char *str);
 t_data *get_data(int argc, char **argv);
 pthread_mutex_t *get_fork(int count);
 

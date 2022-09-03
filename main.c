@@ -30,12 +30,8 @@ int main(int argc, char **argv)
 args:
 fork die eat sleep (max_eat)
 
-eat
-sleep
-think
-die
-
 timestamp_in_ms X has taken a fork
+
 timestamp_in_ms X is eating
 timestamp_in_ms X is sleeping
 timestamp_in_ms X is thinking
