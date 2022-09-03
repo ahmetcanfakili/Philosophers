@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/03 03:11:56 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/03 04:54:31 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,43 @@ pthread_mutex_t *get_fork(int count)
     while (i++ < count)
         pthread_mutex_init(&mutex_fork[i], 0);
     return(mutex_fork);
+}
+
+void *func(void *arg)
+{
+    (void *)arg;
+    printf("Thread Test");
+}
+
+pthread_t *get_philo(t_data *data)
+{
+    size_t i;
+    pthread_t *philos;
+
+    philos = malloc(sizeof(pthread_t) * data->number_of_forks);
+    if (!philos)
+    {
+        printf("Malloc Error! (philos)");
+        free(philos);
+        exit(1);
+    }
+    i = 0;
+    while(i++ < data->number_of_forks)
+    {
+        if (pthread_create(philos[i], 0, &func, 0) != 0)
+        {
+            printf("pthread_create Error!");        
+            exit(1);
+        }
+    }
+    while(i++ < data->number_of_forks)
+    {
+        if (pthread_join(philos[i], 0) != 0)
+        {
+            printf("pthread_join Error!");        
+            exit(1);
+        }
+
+    }
+    return (philos);
 }

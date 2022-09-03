@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
     t_data *data;
     pthread_mutex_t *fork;
+    pthread_t *philo;
 
     if (!(argc == 5 || argc == 6))
     {
@@ -24,6 +25,7 @@ int main(int argc, char **argv)
     }
     data = get_data(argc, argv);
     fork = get_fork(data->number_of_forks);
+    philo = get_philo(data);
 }
 
 /*

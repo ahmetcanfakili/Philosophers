@@ -34,5 +34,7 @@ long long current_time_in_ms(void);
 int	ft_atoi(const char *str);
 t_data *get_data(int argc, char **argv);
 pthread_mutex_t *get_fork(int count);
+void *func(void *arg);
+pthread_t *get_philo(t_data *data);
 
 #endif
