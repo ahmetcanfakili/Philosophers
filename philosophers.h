@@ -19,29 +19,30 @@
 #include <pthread.h>
 #include <sys/time.h>
 
-typedef struct s_philo
-{
-    int index;
-    t_data *data;
-    pthread_t philo;
-} t_philo;
+
 
 typedef struct s_data
 {
     int             number_of_forks;
-    pthread_mutex_t *forks;
     int             time_to_die;
     int             time_to_eat;
     int             time_to_sleep;
     int             number_of_eat;
-    long long       start_time_in_ms;
+    pthread_mutex_t *forks;
+    t_philo         *philos;
 } t_data;
+
+typedef struct s_philo
+{
+    int         id;
+    pthread_t   thread_p;
+} t_philo;
 
 long long current_time_in_ms(void);
 int	ft_atoi(const char *str);
-t_data *get_data(int argc, char **argv);
-pthread_mutex_t *get_fork(int count);
+void get_arguments(int argc, char **argv, t_data *data);
+void get_fork(t_data *data);
 void *func(void *arg);
-pthread_t *get_philo(t_data *data);
+void get_threads(t_data *data);
 
 #endif
