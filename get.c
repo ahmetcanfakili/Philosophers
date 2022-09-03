@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/01 18:06:50 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/03 03:11:56 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ t_data *get_data(int argc, char **argv)
 	t_data *data;
     data = malloc(sizeof(t_data));
     if (!data)
-        printf("Malloc Error!");
+    {
+        printf("Malloc Error! (data)");
+        free(data);
+        exit(1);
+    }
     data->number_of_forks = ft_atoi(argv[1]);
     data->time_to_die = ft_atoi(argv[2]);
     data->time_to_eat = ft_atoi(argv[3]);
@@ -30,7 +34,7 @@ t_data *get_data(int argc, char **argv)
     return (data);
 }
 
-void get_fork(int count)
+pthread_mutex_t *get_fork(int count)
 {
     size_t i;
 
@@ -39,9 +43,11 @@ void get_fork(int count)
     mutex_fork = malloc(sizeof(pthread_mutex_t) * count);
     if (!mutex_fork)
     {
-        printf("Malloc Error! (murex_fork)");           
+        printf("Malloc Error! (mutex_fork)");           
         free(mutex_fork);
+        exit(1);
     }
     while (i++ < count)
         pthread_mutex_init(&mutex_fork[i], 0);
+    return(mutex_fork);
 }

@@ -19,13 +19,11 @@ int main(int argc, char **argv)
 
     if (!(argc == 5 || argc == 6))
     {
-        printf("Argument Error1");
+        printf("Argument Error!");
         exit(1);
     }
-
     data = get_data(argc, argv);
-    //fork = get_fork();
-
+    fork = get_fork(data->number_of_forks);
 }
 
 /*
