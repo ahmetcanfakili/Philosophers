@@ -19,6 +19,13 @@
 #include <pthread.h>
 #include <sys/time.h>
 
+typedef struct s_philo
+{
+    int index;
+    t_data *data;
+    pthread_t philo;
+} t_philo;
+
 typedef struct s_data
 {
     int             number_of_forks;

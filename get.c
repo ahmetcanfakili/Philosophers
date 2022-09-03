@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/03 04:54:31 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/03 05:40:04 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void *func(void *arg)
     printf("Thread Test");
 }
 
-pthread_t *get_philo(t_data *data)
+pthread_t *get_philo(t_data *data, t_philo *philo)
 {
     size_t i;
-    pthread_t *philos;
+    
 
     philos = malloc(sizeof(pthread_t) * data->number_of_forks);
     if (!philos)
@@ -89,4 +89,9 @@ pthread_t *get_philo(t_data *data)
 
     }
     return (philos);
+}
+
+void get_threads()
+{
+    
 }
