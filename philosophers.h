@@ -19,16 +19,17 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <stdbool.h>
+#include "colors.h"
 
 typedef struct s_philo
 {
-    int         id;
+    int         philo_id;
     int         right_fork;
     int         left_fork;
     int         eat_count;
-    bool        is_done;    
+    bool        is_done;
     long long   last_eat_time;
-    pthread_t   thread_philo;
+    pthread_t   thread_id;
 } t_philo;
 
 typedef struct s_data

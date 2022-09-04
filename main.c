@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
     if (!(argc == 5 || argc == 6))
     {
-        printf("Argument Error!");
+        printf("\e[41mArgument Error!");
         exit(1);
     }
     get_arguments(argc, argv, &data);
