@@ -14,16 +14,19 @@
 
 int main(int argc, char **argv)
 {
-    t_data *data;
+    t_data data;
 
     if (!(argc == 5 || argc == 6))
     {
         printf("Argument Error!");
         exit(1);
     }
-    get_arguments(argc, argv, data);
-    get_fork(data);
-    
+    get_arguments(argc, argv, &data);
+    get_forks(&data);
+    get_threads(&data);
+    get_philosophers(&data);
+    //do stuff
+    return (0);
 }
 
 /*
@@ -31,10 +34,8 @@ args:
 fork die eat sleep (max_eat)
 
 timestamp_in_ms X has taken a fork
-
 timestamp_in_ms X is eating
 timestamp_in_ms X is sleeping
 timestamp_in_ms X is thinking
 timestamp_in_ms X died
-
 */

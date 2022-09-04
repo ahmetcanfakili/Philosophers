@@ -18,17 +18,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
-
-typedef struct s_data
-{
-    int             number_of_forks;
-    int             time_to_die;
-    int             time_to_eat;
-    int             time_to_sleep;
-    int             number_of_eat;
-    t_philo         *philos;
-    pthread_mutex_t *forks;
-} t_data;
+#include <stdbool.h>
 
 typedef struct s_philo
 {
@@ -38,7 +28,19 @@ typedef struct s_philo
     int         eat_count;
     bool        is_done;    
     long long   last_eat_time;
+    pthread_t   thread_philo;
 } t_philo;
+
+typedef struct s_data
+{
+    int             number_of_forks;
+    int             time_to_die;
+    int             time_to_eat;
+    int             time_to_sleep;
+    int             must_eat;
+    t_philo         *philos;
+    pthread_mutex_t *forks;
+} t_data;
 
 void *func(void *arg);
 int  ft_atoi(const char *str);

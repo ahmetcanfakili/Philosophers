@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/04 03:32:12 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/04 04:21:07 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ void get_arguments(int argc, char **argv, t_data *data)
     data->time_to_eat = ft_atoi(argv[3]);
     data->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 5)
-		data->number_of_eat = 0;
+		data->must_eat = 0;
 	else
-		data->number_of_eat = ft_atoi(argv[5]);
+		data->must_eat = ft_atoi(argv[5]);
+        printf("%d %d %d %d %d", data->number_of_forks, data->time_to_die, 
+            data->time_to_eat, data->time_to_sleep, data->must_eat);
 }
 
 void get_forks(t_data *data)
 {
-    size_t i;
+    int i;
 
     i = 0;
     data->forks = malloc(sizeof(pthread_mutex_t) * data->number_of_forks);
@@ -48,13 +50,15 @@ void get_forks(t_data *data)
 
 void *func(void *arg)
 {
-    (void *)arg;
-    printf("Thread Test\n");
+    void *tmp;
+    tmp = arg;
+    printf("Thread Test: %p\n", tmp);
+    return (0);
 }
 
 void get_threads(t_data *data)
 {
-    size_t i;
+    int i;
     
     data->philos = malloc(sizeof(t_philo) * data->number_of_forks);
     if (!data->philos)
@@ -66,7 +70,7 @@ void get_threads(t_data *data)
     i = 0;
     while(i++ < data->number_of_forks)
     {
-        if (pthread_create(&data->philos[i], 0, &func, 0) != 0)
+        if (pthread_create(&data->philos[i].thread_philo, 0, &func, 0) != 0)
         {
             printf("pthread_create Error!");        
             exit(1);
@@ -75,7 +79,7 @@ void get_threads(t_data *data)
     i = 0;
     while(i++ < data->number_of_forks)
     {
-        if (pthread_join(data->philos[i], 0) != 0)
+        if (pthread_join(data->philos[i].thread_philo, 0) != 0)
         {
             printf("pthread_join Error!");        
             exit(1);
@@ -85,7 +89,7 @@ void get_threads(t_data *data)
 
 void get_philosophers(t_data *data)
 {
-    size_t i;
+    int i;
 
     i = 1;
     while(i++ < data->number_of_forks)
