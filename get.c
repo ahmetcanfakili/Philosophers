@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/04 02:05:04 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/04 03:32:12 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void get_arguments(int argc, char **argv, t_data *data)
 		data->number_of_eat = ft_atoi(argv[5]);
 }
 
-void get_fork(t_data *data)
+void get_forks(t_data *data)
 {
     size_t i;
 
@@ -56,7 +56,7 @@ void get_threads(t_data *data)
 {
     size_t i;
     
-    data->philos = malloc(sizeof(pthread_t) * data->number_of_forks);
+    data->philos = malloc(sizeof(t_philo) * data->number_of_forks);
     if (!data->philos)
     {
         printf("Malloc Error! (data->philos)");
@@ -83,15 +83,18 @@ void get_threads(t_data *data)
     }
 }
 
-void get_philo(t_data *data)
+void get_philosophers(t_data *data)
 {
     size_t i;
 
-    i = 0;
+    i = 1;
     while(i++ < data->number_of_forks)
     {
-        data->philos->id = i + 1;
-        
+        data->philos[i].id = i;
+        data->philos[i].left_fork = i;
+        data->philos[i].right_fork = (i + 1) % data->number_of_forks;
+        data->philos[i].eat_count = 0;
+        data->philos[i].last_eat_time = 0;
+        data->philos[i].is_done = false;
     }
-    
 }

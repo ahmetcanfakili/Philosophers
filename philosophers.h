@@ -19,8 +19,6 @@
 #include <pthread.h>
 #include <sys/time.h>
 
-
-
 typedef struct s_data
 {
     int             number_of_forks;
@@ -28,21 +26,26 @@ typedef struct s_data
     int             time_to_eat;
     int             time_to_sleep;
     int             number_of_eat;
-    pthread_mutex_t *forks;
     t_philo         *philos;
+    pthread_mutex_t *forks;
 } t_data;
 
 typedef struct s_philo
 {
     int         id;
-    pthread_t   thread_p;
+    int         right_fork;
+    int         left_fork;
+    int         eat_count;
+    bool        is_done;    
+    long long   last_eat_time;
 } t_philo;
 
-long long current_time_in_ms(void);
-int	ft_atoi(const char *str);
-void get_arguments(int argc, char **argv, t_data *data);
-void get_fork(t_data *data);
 void *func(void *arg);
+int  ft_atoi(const char *str);
+void get_forks(t_data *data);
 void get_threads(t_data *data);
+void get_arguments(int argc, char **argv, t_data *data);
+void get_philosophers(t_data *data);
+long long current_time_in_ms(void);
 
 #endif
