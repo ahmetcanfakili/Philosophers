@@ -12,7 +12,3 @@
 
 #include "philosophers.h"
 
-void *func(void *arg)
-{
-    
-}

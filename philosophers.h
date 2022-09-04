@@ -43,12 +43,12 @@ typedef struct s_data
     pthread_mutex_t *forks;
 } t_data;
 
-void *func(void *arg);
 int  ft_atoi(const char *str);
 void get_forks(t_data *data);
 void get_threads(t_data *data);
 void get_arguments(int argc, char **argv, t_data *data);
 void get_philosophers(t_data *data);
 long long current_time_in_ms(void);
+void *dining(t_data *data);
 
 #endif

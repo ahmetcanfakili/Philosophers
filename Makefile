@@ -12,8 +12,8 @@
 
 NAME = philo
 CC = gcc -g -pthread
-CFLAGS = -Wall -Wextra -Werror
-SRCS = main.c utils.c time.c get.c
+#CFLAGS = -Wall -Wextra -Werror
+SRCS = actions.c func.c get.c main.c time.c utils.c
 
 OBJ = $(SRCS:.c=.o)
 
