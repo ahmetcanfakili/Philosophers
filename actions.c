@@ -12,7 +12,7 @@
 
 #include "philosophers.h"
 
-/*
+
 void eating(t_data *data)
 {
     printf("%lld %d is eating", current_time_in_ms(), data->philos[i].philo_id);
@@ -34,7 +34,7 @@ void died(t_data *data)
 }
 */
 
-void *dining(int n)
+void *dining(int n) // n = fork count
 {
     int i;
 
@@ -43,7 +43,7 @@ void *dining(int n)
     while(i++ < data->number_of_forks)
     {
         pthread_mutex_lock(&data->forks[i]);
-        pthread_mutex_lock(&data->forks[(i + 1) % n);
+        pthread_mutex_lock(&data->forks[(i + 1) % n]);
     }
 
     i = 0;

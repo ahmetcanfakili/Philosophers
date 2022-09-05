@@ -19,7 +19,6 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <stdbool.h>
-#include "colors.h"
 
 typedef struct s_philo
 {
