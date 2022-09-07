@@ -47,7 +47,9 @@ void get_forks(t_data *data);
 void get_threads(t_data *data);
 void get_arguments(int argc, char **argv, t_data *data);
 void get_philosophers(t_data *data);
-long long current_time_in_ms(void);
+long long current_time(void);
 void *dining(t_data *data);
+void destroy_mutexes(t_data *data);
+void status(t_data *data);
 
 #endif

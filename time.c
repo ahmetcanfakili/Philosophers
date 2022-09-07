@@ -6,13 +6,13 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:28:37 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/01 15:39:22 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/07 21:14:44 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long long current_time_in_ms(void)
+long long current_time(void)
 {
     long long time;
     struct timeval current_time;

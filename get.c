@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/05 14:46:51 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/07 20:21:01 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void get_arguments(int argc, char **argv, t_data *data)
 		data->must_eat = ft_atoi(argv[5]);
 }
 
-void get_forks(t_data *data)
+void get_mutexes(t_data *data)
 {
     int i;
 
@@ -98,3 +98,17 @@ void get_philosophers(t_data *data)
         data->philos[i].is_done = false;
     }
 }
+
+void destroy_mutexes(t_data *data)
+{
+    int i;
+
+    i = 0;
+    while (i++ < data->number_of_forks)
+        if (pthread_mutex_destroy(&data->forks[i]) != 0)
+        {
+            printf("\e[41mpthread_mutex_destroy Error!\n");
+            exit(1);
+        }
+}
+
