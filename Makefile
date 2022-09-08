@@ -18,7 +18,7 @@ SRCS = actions.c get.c main.c time.c utils.c dining.c
 OBJ = $(SRCS:.c=.o)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) -ggdb
 
 all: $(NAME)
 

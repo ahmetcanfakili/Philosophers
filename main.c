@@ -12,6 +12,8 @@
 
 #include "philosophers.h"
 
+
+// struct sorunu çözülecek !!
 int main(int argc, char **argv)
 {
     t_data data;
@@ -25,7 +27,6 @@ int main(int argc, char **argv)
     get_mutexes(&data);
     get_threads(&data);
     get_philosophers(&data);
-    //do stuff
     destroy_mutexes(&data);
     return (0);
 }

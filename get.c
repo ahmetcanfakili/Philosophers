@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/08 20:07:20 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/09 02:00:51 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 void get_arguments(int argc, char **argv, t_data *data)
 {
-    data = malloc(sizeof(t_data));
-    if (!data)
-    {
-        printf("\e[41mMalloc Error! (data)");
-        exit(1);
-    }
     data->number_of_forks = ft_atoi(argv[1]);
     data->time_to_die = ft_atoi(argv[2]);
     data->time_to_eat = ft_atoi(argv[3]);

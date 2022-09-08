@@ -20,8 +20,8 @@ void *dining(void *philo_arg)
     philo = (t_philo *)philo_arg;
     take_forks(philo);
     eating(philo);
+    put_forks(philo); 
     thinking(philo);
     sleeping(philo);
-    put_forks(philo); 
     return(0);
 }
