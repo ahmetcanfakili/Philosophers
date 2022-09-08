@@ -20,13 +20,13 @@ void status(t_philo *philo, int msg)
 
 void take_forks(t_philo *philo)
 {
-    if (pthread_mutex_lock(philo->data->forks[philo->left_fork]) != 0)
+    if (pthread_mutex_lock(&philo->data->forks[philo->left_fork]) != 0)
     {
         printf("\e[41mpthread_mutex_lock Error!\n");
         exit(1);
     }
     status(philo, 0);
-    if (pthread_mutex_lock(philo->data->forks[philo->right_fork]) != 0)
+    if (pthread_mutex_lock(&philo->data->forks[philo->right_fork]) != 0)
     {
         printf("\e[41mpthread_mutex_lock Error!\n");
         exit(1);
@@ -44,13 +44,13 @@ void eating(t_philo *philo)
 
 void put_forks(t_philo *philo)
 {
-    if ( pthread_mutex_unlock(philo->data->forks[philo->left_fork]) != 0)
+    if ( pthread_mutex_unlock(&philo->data->forks[philo->left_fork]) != 0)
     {
         printf("\e[41mpthread_mutex_unlock Error!\n");
         exit(1);
     }
 
-    if (pthread_mutex_unlock(philo->data->forks[philo->right_fork]) != 0)
+    if (pthread_mutex_unlock(&philo->data->forks[philo->right_fork]) != 0)
     {
         printf("\e[41mpthread_mutex_unlock Error!\n");
         exit(1);
