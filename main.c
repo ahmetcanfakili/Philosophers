@@ -21,13 +21,12 @@ int main(int argc, char **argv)
         printf("\e[41mArgument Error!");
         exit(1);
     }
-
     get_arguments(argc, argv, &data);
     get_mutexes(&data);
     get_threads(&data);
-    destroy_mutexes(&data);
     get_philosophers(&data);
     //do stuff
+    destroy_mutexes(&data);
     return (0);
 }
 

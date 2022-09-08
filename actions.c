@@ -12,7 +12,6 @@
 
 #include "philosophers.h"
 
-//print -> timestamp_in_ms X has taken a fork
 void status(t_philo *philo, int msg)
 {
     char *states[5] = {"has taken a fork\n", "is eating\n", "is sleeping\n", "is thinking\n", "died\n"};
@@ -35,13 +34,12 @@ void take_forks(t_philo *philo)
     status(philo, 0);
 }
 
-//not finished yet
 void eating(t_philo *philo)
 {
     philo->eat_count++;
     status(philo, 1);
     philo->last_eat_time = current_time();
-    usleep(philo->data->time_to_eat / 1000);
+    usleep(philo->data->time_to_eat * 1000);
 }
 
 void put_forks(t_philo *philo)
@@ -65,9 +63,8 @@ void thinking(t_philo *philo)
     status(philo, 3);
 }
 
-//not finished yet
 void sleeping(t_philo *philo)
 {
     status(philo, 2);
-
+    usleep(philo->data->time_to_sleep * 1000);
 }
