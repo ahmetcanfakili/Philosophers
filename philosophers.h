@@ -49,8 +49,13 @@ void get_threads(t_data *data);
 void get_arguments(int argc, char **argv, t_data *data);
 void get_philosophers(t_data *data);
 long long current_time(void);
-void *dining(int i);
+void *dining(void *philo_arg);
 void destroy_mutexes(t_data *data);
-void status(t_data *data, int i, int msg);
+void status(t_philo *philo, int msg);
+void take_forks(t_philo *philo);
+void eating(t_philo *philo);
+void put_forks(t_philo *philo);
+void thinking(t_philo *philo);
+void sleeping(t_philo *philo);
 
 #endif

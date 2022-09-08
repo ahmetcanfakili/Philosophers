@@ -12,45 +12,62 @@
 
 #include "philosophers.h"
 
-//timestamp_in_ms X has taken a fork
-
-void status(t_data *data, int i, int msg)
+//print -> timestamp_in_ms X has taken a fork
+void status(t_philo *philo, int msg)
 {
     char *states[5] = {"has taken a fork\n", "is eating\n", "is sleeping\n", "is thinking\n", "died\n"};
-    printf("%lld, %s", current_time(), data->philos[i].philo_id, states[msg]);
+    printf("%lld, %d, %s", current_time(), philo->philo_id, states[msg]);
 }
 
-// not finished yet
-void *dining(int i)
+void take_forks(t_philo *philo)
 {
-    //do stuff
+    if (pthread_mutex_lock(philo->data->forks[philo->left_fork]) != 0)
+    {
+        printf("\e[41mpthread_mutex_lock Error!\n");
+        exit(1);
+    }
+    status(philo, 0);
+    if (pthread_mutex_lock(philo->data->forks[philo->right_fork]) != 0)
+    {
+        printf("\e[41mpthread_mutex_lock Error!\n");
+        exit(1);
+    }
+    status(philo, 0);
 }
 
-void take_forks()
+//not finished yet
+void eating(t_philo *philo)
 {
-    pthread_mutex_lock() //left fork
-    status();           //has taken a fork
-    pthread_mutex_lock() //right fork
+    philo->eat_count++;
+    status(philo, 1);
+    philo->last_eat_time = current_time();
+    usleep(philo->data->time_to_eat / 1000);
 }
 
-void eating()
+void put_forks(t_philo *philo)
 {
-         //is eating status
+    if ( pthread_mutex_unlock(philo->data->forks[philo->left_fork]) != 0)
+    {
+        printf("\e[41mpthread_mutex_unlock Error!\n");
+        exit(1);
+    }
+
+    if (pthread_mutex_unlock(philo->data->forks[philo->right_fork]) != 0)
+    {
+        printf("\e[41mpthread_mutex_unlock Error!\n");
+        exit(1);
+    }
 }
 
-void put_forks()
+//not finished yet
+void thinking(t_philo *philo)
 {
-    pthread_mutex_unlock();
-    status();
-    pthread_mutex_unlock();    
+    status(philo, 3);
 }
 
-void thinking()
+//not finished yet
+void sleeping(t_philo *philo)
 {
-        //is thinking status
-}
+    status(philo, 2);
 
-void sleeping()
-{
-        //is sleeping status
 }
