@@ -28,6 +28,7 @@ typedef struct s_philo
     int         eat_count;
     bool        is_done;
     long long   last_eat_time;
+    t_data      *data;
     pthread_t   thread_id;
 } t_philo;
 
@@ -50,6 +51,6 @@ void get_philosophers(t_data *data);
 long long current_time(void);
 void *dining(int i);
 void destroy_mutexes(t_data *data);
-void status(int i);
+void status(t_data *data, int i, int msg);
 
 #endif

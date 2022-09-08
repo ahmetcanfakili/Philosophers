@@ -12,31 +12,45 @@
 
 #include "philosophers.h"
 
-void status(int i)
+//timestamp_in_ms X has taken a fork
+
+void status(t_data *data, int i, int msg)
 {
     char *states[5] = {"has taken a fork\n", "is eating\n", "is sleeping\n", "is thinking\n", "died\n"};
-    printf("%s", states[i]);
+    printf("%lld, %s", current_time(), data->philos[i].philo_id, states[msg]);
 }
 
 // not finished yet
 void *dining(int i)
 {
-    int i;
+    //do stuff
+}
 
-    i = 0;
-    while(i++ < data->number_of_forks)
-    {
-        pthread_mutex_lock(&data->forks[i]);
-        pthread_mutex_lock(&data->forks[(i + 1) % data->number_of_forks]);
-    }
+void take_forks()
+{
+    pthread_mutex_lock() //left fork
+    status();           //has taken a fork
+    pthread_mutex_lock() //right fork
+}
 
-    i = 0;
-        printf("%lld %d is eating\n", current_time(), data->philos[i].philo_id);
-    while(i++ < data->number_of_forks)
-    {
-        sleep(3);
-        pthread_mutex_unlock(&data->forks[i]);
-        pthread_mutex_unlock(&data->forks[(i + 1) % data->number_of_forks]);
-    }
-    printf("%lld %d is finished eating\n", current_time(), data->philos[i].philo_id);
+void eating()
+{
+         //is eating status
+}
+
+void put_forks()
+{
+    pthread_mutex_unlock();
+    status();
+    pthread_mutex_unlock();    
+}
+
+void thinking()
+{
+        //is thinking status
+}
+
+void sleeping()
+{
+        //is sleeping status
 }
