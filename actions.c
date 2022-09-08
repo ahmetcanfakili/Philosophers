@@ -12,26 +12,22 @@
 
 #include "philosophers.h"
 
-// not finished yet
-void status(t_data *data)
+void status(int i)
 {
-    int i;
-
-    i = 0;
-    printf("%lld %d %s", current_time(), data->philos[i].philo_id, "message");  //write message function!
+    char *states[5] = {"has taken a fork\n", "is eating\n", "is sleeping\n", "is thinking\n", "died\n"};
+    printf("%s", states[i]);
 }
 
 // not finished yet
-void *dining(t_data *data)
+void *dining(int i)
 {
     int i;
 
-        status(data);
     i = 0;
     while(i++ < data->number_of_forks)
     {
         pthread_mutex_lock(&data->forks[i]);
-        pthread_mutex_lock(&data->forks[(i + 1) % n]);
+        pthread_mutex_lock(&data->forks[(i + 1) % data->number_of_forks]);
     }
 
     i = 0;

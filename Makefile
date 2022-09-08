@@ -13,7 +13,7 @@
 NAME = philo
 CC = gcc -g -pthread
 #CFLAGS = -Wall -Wextra -Werror
-SRCS = actions.c get.c main.c time.c utils.c
+SRCS = actions.c get.c main.c time.c utils.c dining.c
 
 OBJ = $(SRCS:.c=.o)
 
