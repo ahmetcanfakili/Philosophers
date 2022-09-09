@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME = philo
-CC = gcc -g -fsanitize=thread
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
 SRCS = actions.c get.c main.c time.c utils.c dining.c
 
 OBJ = $(SRCS:.c=.o)
