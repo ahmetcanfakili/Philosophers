@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/09 02:00:51 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/09 14:13:35 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,14 @@ void get_mutexes(t_data *data)
 {
     int i;
 
-    i = 0;
+    i = -1;
     data->forks = malloc(sizeof(pthread_mutex_t) * data->number_of_forks);
     if (!data->forks)
     {
         printf("\e[41mMalloc Error! (data->forks)\n");
-        free(data->forks);        
         exit(1);
     }
-    while (i++ < data->number_of_forks)
+    while (++i < data->number_of_forks)
     {
         if (pthread_mutex_init(&data->forks[i], 0) != 0)
         {
@@ -54,11 +53,10 @@ void get_threads(t_data *data)
     if (!data->philos)
     {
         printf("\e[41mMalloc Error! (data->philos)\n");
-        free(data->philos);
         exit(1);
     }
-    i = 0;
-    while(i++ < data->number_of_forks)
+    i = -1;
+    while(++i < data->number_of_forks)
     {
         if (pthread_create(&data->philos[i].thread_id, 0, &dining, &data->philos[i]) != 0)
         {
@@ -66,8 +64,8 @@ void get_threads(t_data *data)
             exit(1);
         }
     }
-    i = 0;
-    while(i++ < data->number_of_forks)
+    i = -1;
+    while(++i < data->number_of_forks)
     {
         if (pthread_join(data->philos[i].thread_id, 0) != 0)
         {
@@ -81,15 +79,16 @@ void get_philosophers(t_data *data)
 {
     int i;
 
-    i = 1;
-    while(i++ < data->number_of_forks)
+    i = -1;
+    while(++i < data->number_of_forks)
     {
-        data->philos[i].philo_id = i;
+        data->philos[i].philo_id = i + 1;
         data->philos[i].left_fork = i;
         data->philos[i].right_fork = (i + 1) % data->number_of_forks;
         data->philos[i].eat_count = 0;
         data->philos[i].last_eat_time = 0;
         data->philos[i].is_done = false;
+        data->philos[i].data = data;
     }
 }
 
@@ -97,8 +96,8 @@ void destroy_mutexes(t_data *data)
 {
     int i;
 
-    i = 0;
-    while (i++ < data->number_of_forks)
+    i = -1;
+    while (++i < data->number_of_forks)
         if (pthread_mutex_destroy(&data->forks[i]) != 0)
         {
             printf("\e[41mpthread_mutex_destroy Error!\n");
