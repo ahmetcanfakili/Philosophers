@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/09 14:13:35 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/09 14:30:13 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void get_threads(t_data *data)
 {
     int i;
     
-    data->philos = malloc(sizeof(t_philo) * data->number_of_forks);
     if (!data->philos)
     {
         printf("\e[41mMalloc Error! (data->philos)\n");
@@ -78,8 +77,9 @@ void get_threads(t_data *data)
 void get_philosophers(t_data *data)
 {
     int i;
-
+    
     i = -1;
+    data->philos = malloc(sizeof(t_philo) * data->number_of_forks);
     while(++i < data->number_of_forks)
     {
         data->philos[i].philo_id = i + 1;

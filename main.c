@@ -25,8 +25,8 @@ int main(int argc, char **argv)
     }
     get_arguments(argc, argv, &data);
     get_mutexes(&data);
-    get_threads(&data);
     get_philosophers(&data);
+    get_threads(&data);
     destroy_mutexes(&data);
     return (0);
 }
