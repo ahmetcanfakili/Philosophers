@@ -6,7 +6,7 @@
 /*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/09 14:30:13 by afakili          ###   ########.fr       */
+/*   Updated: 2022/09/09 18:04:14 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void get_arguments(int argc, char **argv, t_data *data)
 {
-    data->number_of_forks = ft_atoi(argv[1]);
-    data->time_to_die = ft_atoi(argv[2]);
-    data->time_to_eat = ft_atoi(argv[3]);
-    data->time_to_sleep = ft_atoi(argv[4]);
+    data->number_of_forks = mf_ft_atoi(argv[1]);
+    data->time_to_die = mf_ft_atoi(argv[2]);
+    data->time_to_eat = mf_ft_atoi(argv[3]);
+    data->time_to_sleep = mf_ft_atoi(argv[4]);
 	if (argc == 5)
 		data->must_eat = 0;
 	else
-		data->must_eat = ft_atoi(argv[5]);
+		data->must_eat = mf_ft_atoi(argv[5]);
 }
 
 void get_mutexes(t_data *data)

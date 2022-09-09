@@ -25,19 +25,19 @@ void take_forks(t_philo *philo)
         printf("\e[41mpthread_mutex_lock Error!\n");
         exit(1);
     }
-    status(philo, 0);
+    status(philo, TAKE_FORK);
     if (pthread_mutex_lock(&philo->data->forks[philo->right_fork]) != 0)
     {
         printf("\e[41mpthread_mutex_lock Error!\n");
         exit(1);
     }
-    status(philo, 0);
+    status(philo, TAKE_FORK);
 }
 
 void eating(t_philo *philo)
 {
     philo->eat_count++;
-    status(philo, 1);
+    status(philo, EATING);
     philo->last_eat_time = current_time();
     usleep(philo->data->time_to_eat * 1000);
 }
@@ -60,11 +60,11 @@ void put_forks(t_philo *philo)
 //not finished yet
 void thinking(t_philo *philo)
 {
-    status(philo, 3);
+    status(philo, THINKING);
 }
 
 void sleeping(t_philo *philo)
 {
-    status(philo, 2);
+    status(philo, SLEEPING);
     usleep(philo->data->time_to_sleep * 1000);
 }

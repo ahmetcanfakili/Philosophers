@@ -45,7 +45,15 @@ typedef struct s_data
     pthread_mutex_t *forks;
 } t_data;
 
-int  ft_atoi(const char *str);
+enum state {
+    TAKE_FORK,
+    EATING,
+    SLEEPING,
+    THINKING,
+    DIED
+};
+
+int	mf_ft_atoi(const char *str);
 void get_mutexes(t_data *data);
 void get_threads(t_data *data);
 void get_arguments(int argc, char **argv, t_data *data);
