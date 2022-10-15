@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
+/*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/09/09 18:04:14 by afakili          ###   ########.fr       */
+/*   Updated: 2022/10/15 20:58:44 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void get_arguments(int argc, char **argv, t_data *data)
 		data->must_eat = 0;
 	else
 		data->must_eat = mf_ft_atoi(argv[5]);
+    data->running = true;
+    check_value(data);
 }
 
 void get_mutexes(t_data *data)
@@ -43,17 +45,13 @@ void get_mutexes(t_data *data)
             exit(1);
         }
     }
+	pthread_mutex_init(&data->w_permission, NULL);
 }
 
 void get_threads(t_data *data)
 {
     int i;
-    
-    if (!data->philos)
-    {
-        printf("\e[41mMalloc Error! (data->philos)\n");
-        exit(1);
-    }
+
     i = -1;
     while(++i < data->number_of_forks)
     {
@@ -63,6 +61,8 @@ void get_threads(t_data *data)
             exit(1);
         }
     }
+    //dining_checker eklenecek
+
     i = -1;
     while(++i < data->number_of_forks)
     {
@@ -80,6 +80,12 @@ void get_philosophers(t_data *data)
     
     i = -1;
     data->philos = malloc(sizeof(t_philo) * data->number_of_forks);
+    if (!data->philos)
+    {
+        printf("\e[41mMalloc Error! (data->philos)\n");
+        exit(1);
+    }
+    
     while(++i < data->number_of_forks)
     {
         data->philos[i].philo_id = i + 1;
@@ -89,18 +95,6 @@ void get_philosophers(t_data *data)
         data->philos[i].last_eat_time = 0;
         data->philos[i].is_done = false;
         data->philos[i].data = data;
+        data->philos[i].thread_id = 0;
     }
-}
-
-void destroy_mutexes(t_data *data)
-{
-    int i;
-
-    i = -1;
-    while (++i < data->number_of_forks)
-        if (pthread_mutex_destroy(&data->forks[i]) != 0)
-        {
-            printf("\e[41mpthread_mutex_destroy Error!\n");
-            exit(1);
-        }
 }

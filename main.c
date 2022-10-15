@@ -12,22 +12,16 @@
 
 #include "philosophers.h"
 
-
-// struct sorunu çözülecek !!
 int main(int argc, char **argv)
 {
     t_data data;
 
-    if (!(argc == 5 || argc == 6))
-    {
-        printf("\e[41mArgument Error!");
-        exit(1);
-    }
+    check_arg_count(argc);
     get_arguments(argc, argv, &data);
     get_mutexes(&data);
     get_philosophers(&data);
     get_threads(&data);
-    destroy_mutexes(&data);
+    destroy_all(&data);
     return (0);
 }
 

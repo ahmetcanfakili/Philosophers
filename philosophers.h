@@ -41,8 +41,10 @@ typedef struct s_data
     int             time_to_eat;
     int             time_to_sleep;
     int             must_eat;
+    bool            running;
     t_philo         *philos;
     pthread_mutex_t *forks;
+    pthread_mutex_t w_permission;
 } t_data;
 
 enum state {
@@ -61,11 +63,15 @@ void get_philosophers(t_data *data);
 long long current_time(void);
 void *dining(void *philo_arg);
 void destroy_mutexes(t_data *data);
+void destroy_threads(t_data *data);
+void destroy_all(t_data *data);
 void status(t_philo *philo, int msg);
 void take_forks(t_philo *philo);
 void eating(t_philo *philo);
 void put_forks(t_philo *philo);
 void thinking(t_philo *philo);
 void sleeping(t_philo *philo);
+void check_arg_count(int argc);
+void check_value(t_data *data);
 
 #endif
