@@ -30,7 +30,7 @@ typedef struct s_philo
 	int		left_fork;
 	int		eat_count;
 	bool		is_done;
-	long		longlast_eat_time;
+	long long last_eat_time;
 	t_data		*data;
 	pthread_t	thread_id;
 }	t_philo;
