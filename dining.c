@@ -17,6 +17,8 @@ void	*dining(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
+	//working on ...
+	
 	take_forks(philo);
 	eating(philo);
 	put_forks(philo); 

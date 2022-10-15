@@ -11,14 +11,14 @@
 # **************************************************************************** #
 
 NAME = philo
-CC = gcc -g
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
-SRCS = actions.c get.c main.c time.c utils.c dining.c
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
+SRCS = actions.c check.c destroy.c dining.c get.c main.c time.c utils.c
 
 OBJ = $(SRCS:.c=.o)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) -ggdb
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
 

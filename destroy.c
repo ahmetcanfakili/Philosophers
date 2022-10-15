@@ -6,7 +6,7 @@
 /*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:52:01 by afakili           #+#    #+#             */
-/*   Updated: 2022/10/15 20:52:12 by afakili          ###   ########.fr       */
+/*   Updated: 2022/10/16 00:31:31 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	destroy_threads(t_data *data)
 	}
 }
 
-void	destroy(t_data *data)
+void	destroy_all(t_data *data)
 {
 	destroy_threads(data);
 	destroy_mutexes(data);

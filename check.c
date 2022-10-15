@@ -6,7 +6,7 @@
 /*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:45:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/10/15 21:58:36 by afakili          ###   ########.fr       */
+/*   Updated: 2022/10/16 00:22:01 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	check_arg_count(int argc)
 
 void	check_value(t_data *data)
 {
+	//ekstra kontroller eklenebilir!
 	if (data->number_of_forks > 200)
 	{
 		printf("\e[41mThe number of philosophers cannot exceed 200!\n");
