@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/time.h>
@@ -65,7 +66,7 @@ void *dining(void *philo_arg);
 void destroy_mutexes(t_data *data);
 void destroy_threads(t_data *data);
 void destroy_all(t_data *data);
-void status(t_philo *philo, int msg);
+void status(t_philo *philo, int msg, uint64_t current_time);
 void take_forks(t_philo *philo);
 void eating(t_philo *philo);
 void put_forks(t_philo *philo);
