@@ -12,11 +12,12 @@
 
 #include "philosophers.h"
 
-long long current_time(void)
+long long	current_time(void)
 {
-    long long time;
-    struct timeval current_time;
-    gettimeofday(&current_time, 0);
-    time =(current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-    return (time);
+	long long	time;
+	struct timeval	current_time;
+
+	gettimeofday(&current_time, 0);
+	time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return (time);
 }

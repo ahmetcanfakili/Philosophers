@@ -12,17 +12,17 @@
 
 #include "philosophers.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_data data;
+	t_data	data;
 
-    check_arg_count(argc);
-    get_arguments(argc, argv, &data);
-    get_mutexes(&data);
-    get_philosophers(&data);
-    get_threads(&data);
-    destroy_all(&data);
-    return (0);
+	check_arg_count(argc);
+	get_arguments(argc, argv, &data);
+	get_mutexes(&data);
+	get_philosophers(&data);
+	get_threads(&data);
+	destroy_all(&data);
+	return (0);
 }
 
 /*

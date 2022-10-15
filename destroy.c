@@ -12,38 +12,38 @@
 
 #include "philosophers.h"
 
-void destroy_mutexes(t_data *data)
+void	destroy_mutexes(t_data *data)
 {
-    int i;
+	int	i;
 
-    i = -1;
-    while (++i < data->number_of_forks)
-        if (pthread_mutex_destroy(&data->forks[i]) != 0)
-        {
-            printf("\e[41mpthread_mutex_destroy Error!\n");
-            exit(1);
-        }
+	i = -1;
+	while (++i < data->number_of_forks)
+		if (pthread_mutex_destroy(&data->forks[i]) != 0)
+		{
+			printf("\e[41mpthread_mutex_destroy Error!\n");
+			exit(1);
+		}
 }
 
-void destroy_threads(t_data *data)
+void	destroy_threads(t_data *data)
 {
-    int i;
-    
-    i = -1;
-    while(++i < data->number_of_forks)
-    {
-        if (pthread_detach(data->philos[i].thread_id) != 0)
-        {
-            printf("\e[41mpthread_detach Error!\n");
-            exit(1);
-        } 
-    }
+	int	i;
+
+	i = -1;
+	while (++i < data->number_of_forks)
+	{
+		if (pthread_detach(data->philos[i].thread_id) != 0)
+		{
+			printf("\e[41mpthread_detach Error!\n");
+			exit(1);
+		}
+	}
 }
 
-void    destroy(t_data *data)
+void	destroy(t_data *data)
 {
-    destroy_threads(data);
-    destroy_mutexes(data);
-    free(data->philos);
-    free(data->forks);
+	destroy_threads(data);
+	destroy_mutexes(data);
+	free(data->philos);
+	free(data->forks);
 }

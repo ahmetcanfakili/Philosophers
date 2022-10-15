@@ -12,16 +12,15 @@
 
 #include "philosophers.h"
 
-// not finished yet
-void *dining(void *philo_arg)
+void	*dining(void *philo_arg)
 {
-    t_philo *philo;
+	t_philo	*philo;
 
-    philo = (t_philo *)philo_arg;
-    take_forks(philo);
-    eating(philo);
-    put_forks(philo); 
-    thinking(philo);
-    sleeping(philo);
-    return(0);
+	philo = (t_philo *)philo_arg;
+	take_forks(philo);
+	eating(philo);
+	put_forks(philo); 
+	thinking(philo);
+	sleeping(philo);
+	return(0);
 }
