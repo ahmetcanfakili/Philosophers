@@ -43,6 +43,7 @@ typedef struct s_data
 	int		time_to_sleep;
 	int		must_eat;
 	bool		running;
+	int 	finished_count;
 	t_philo		*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	w_permission;
@@ -73,5 +74,6 @@ void		thinking(t_philo *philo);
 void		sleeping(t_philo *philo);
 void		check_arg_count(int argc);
 void		check_value(t_data *data);
+void		*dining_checker(void *data);
 
 #endif

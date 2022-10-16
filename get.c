@@ -6,7 +6,7 @@
 /*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/10/15 20:58:44 by afakili          ###   ########.fr       */
+/*   Updated: 2022/10/16 19:49:21 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	get_mutexes(t_data *data)
 void	get_threads(t_data *data)
 {
 	int	i;
+	pthread_t dining_id;
 
 	i = -1;
 	while (++i < data->number_of_forks)
@@ -71,6 +72,8 @@ void	get_threads(t_data *data)
 			exit(1);
 		}
 	}
+	pthread_create(&dining_id, 0, &dining_checker, data);
+	pthread_join(dining_id, 0);
 }
 
 void	get_philosophers(t_data *data)

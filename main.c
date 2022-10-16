@@ -25,13 +25,4 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-/*
-args:
-fork die eat sleep (max_eat)
-
-timestamp_in_ms X has taken a fork
-timestamp_in_ms X is eating
-timestamp_in_ms X is thinking
-timestamp_in_ms X is sleeping
-timestamp_in_ms X died
-*/
+// timestamp hatalı
