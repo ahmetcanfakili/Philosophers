@@ -6,7 +6,7 @@
 /*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/10/18 14:11:56 by afakili          ###   ########.fr       */
+/*   Updated: 2022/11/01 22:38:36 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void	get_threads(t_data *data)
 		// }
 	}
 	i = -1;
-	while (++i < data->number_of_forks)
-	{
-		if (pthread_join(data->philos[i].thread_id, 0) != 0)
-		{
-			printf("\e[41mpthread_join Error!\n");
-			exit(1);
-		}
-	}
+	// while (++i < data->number_of_forks)
+	// {
+	// 	if (pthread_join(data->philos[i].thread_id, 0) != 0)
+	// 	{
+	// 		printf("\e[41mpthread_join Error!\n");
+	// 		exit(1);
+	// 	}
+	// }
 	pthread_create(&dining_id, 0, &dining_checker, data);
 	pthread_join(dining_id, 0);
 }
