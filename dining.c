@@ -23,19 +23,19 @@ void	*dining(void *philo_arg)
 		thinking(philo);
 		usleep(philo->data->time_to_eat * 1000);
 	}
-	while(philo->data->running)
+	while (philo->data->running)
 	{
 		take_forks(philo);
 		eating(philo);
-		put_forks(philo); 
+		put_forks(philo);
 		thinking(philo);
 		if (philo->eat_count == philo->data->must_eat)
 		{
 			philo->is_done = true;
 			philo->data->finished_count++;
-			break;
+			break ;
 		}
 		sleeping(philo);
 	}
-	return(0);
+	return (0);
 }

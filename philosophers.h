@@ -25,26 +25,26 @@ typedef struct s_data	t_data;
 
 typedef struct s_philo
 {
-	int		philo_id;
-	int		right_fork;
-	int		left_fork;
-	int		eat_count;
+	int			philo_id;
+	int			right_fork;
+	int			left_fork;
+	int			eat_count;
 	bool		is_done;
-	long long last_eat_time;
+	long long	last_eat_time;
 	t_data		*data;
 	pthread_t	thread_id;
 }	t_philo;
 
 typedef struct s_data
 {
-	int		number_of_forks;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		must_eat;
-	bool		running;
-	int 	finished_count;
-	t_philo		*philos;
+	int				number_of_forks;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				must_eat;
+	bool			running;
+	int				finished_count;
+	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	w_permission;
 }	t_data;
@@ -56,7 +56,7 @@ enum e_state {
 	THINKING,
 	DIED
 };
-int		mf_ft_atoi(const char *str);
+int			mf_ft_atoi(const char *str);
 void		get_mutexes(t_data *data);
 void		get_threads(t_data *data);
 void		get_arguments(int argc, char **argv, t_data *data);

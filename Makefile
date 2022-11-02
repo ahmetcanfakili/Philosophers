@@ -13,7 +13,7 @@
 NAME = philo
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
-SRCS = actions.c check.c destroy.c dining.c get.c main.c time.c utils.c
+SRCS = actions.c check.c destroy.c dining.c get.c main.c print_status.c time.c utils.c
 
 OBJ = $(SRCS:.c=.o)
 

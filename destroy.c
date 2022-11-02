@@ -6,7 +6,7 @@
 /*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:52:01 by afakili           #+#    #+#             */
-/*   Updated: 2022/10/16 00:31:31 by afakili          ###   ########.fr       */
+/*   Updated: 2022/11/02 20:15:41 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ void	destroy_mutexes(t_data *data)
 
 	i = -1;
 	while (++i < data->number_of_forks)
-		if (pthread_mutex_destroy(&data->forks[i]) != 0)
-		{
-			printf("\e[41mpthread_mutex_destroy Error!\n");
-			exit(1);
-		}
+		pthread_mutex_destroy(&data->forks[i]);
 }
 
 void	destroy_threads(t_data *data)
