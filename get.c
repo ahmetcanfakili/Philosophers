@@ -6,7 +6,7 @@
 /*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/11/01 22:38:36 by afakili          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:55:33 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ void	get_threads(t_data *data)
 	i = -1;
 	while (++i < data->number_of_forks)
 	{
-		pthread_create(&data->philos[i].thread_id, 0, &dining, &data->philos[i]);
-		// if (pthread_create(&data->philos[i].thread_id, 0, &dining, &data->philos[i]) != 0)
-		// {
-		// 	printf("\e[41mpthread_create Error!\n");
-		// 	exit(1);
-		// }
+		if (pthread_create(&data->philos[i].thread_id, 0, &dining, &data->philos[i]) != 0)
+		{
+			printf("\e[41mpthread_create Error!\n");
+			exit(1);
+		}
 	}
 	i = -1;
 	// while (++i < data->number_of_forks)

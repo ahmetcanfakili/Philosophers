@@ -26,5 +26,4 @@ int	main(int argc, char **argv)
 }
 
 // timestamp hatalı
-// get_threads fonsiyonundan çıkmıyor
-// filozoflar ölümsüzlüğü bulmuş
+// pthread_mutex_destroy Error!
