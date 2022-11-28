@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:55:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/11/02 20:29:02 by afakili          ###   ########.fr       */
+/*   Updated: 2022/11/28 14:48:34 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	get_philosophers(t_data *data)
 		data->philos[i].is_done = false;
 		data->philos[i].data = data;
 		data->philos[i].thread_id = 0;
+		data->philos[i].start_time = current_time();
 	}
 }

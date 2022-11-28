@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:45:11 by afakili           #+#    #+#             */
-/*   Updated: 2022/11/02 20:21:03 by afakili          ###   ########.fr       */
+/*   Updated: 2022/11/28 14:57:14 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	check_value(t_data *data)
 		exit(1);
 	}
 }
+
 
 void	*dining_checker(void *data_arg)
 {

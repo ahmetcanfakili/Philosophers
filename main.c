@@ -24,6 +24,3 @@ int	main(int argc, char **argv)
 	destroy_all(&data);
 	return (0);
 }
-
-// timestamp hatalı
-// pthread_mutex_destroy Error!

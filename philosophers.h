@@ -31,6 +31,7 @@ typedef struct s_philo
 	int			eat_count;
 	bool		is_done;
 	long long	last_eat_time;
+	long long	start_time;
 	t_data		*data;
 	pthread_t	thread_id;
 }	t_philo;
@@ -61,7 +62,7 @@ void		get_mutexes(t_data *data);
 void		get_threads(t_data *data);
 void		get_arguments(int argc, char **argv, t_data *data);
 void		get_philosophers(t_data *data);
-long long	current_time(void);
+uint64_t	current_time(void);
 void		*dining(void *philo_arg);
 void		destroy_mutexes(t_data *data);
 void		destroy_threads(t_data *data);

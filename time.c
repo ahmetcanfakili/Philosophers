@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: afakili <ahmetcanfakili50@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:28:37 by afakili           #+#    #+#             */
-/*   Updated: 2022/11/02 20:25:54 by afakili          ###   ########.fr       */
+/*   Updated: 2022/11/28 14:46:49 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long long	current_time(void)
+uint64_t	current_time(void)
 {
-	long long		time;
-	struct timeval	current_time;
+	static struct timeval	tv;
 
-	gettimeofday(&current_time, 0);
-	time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
-	return (time);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 }

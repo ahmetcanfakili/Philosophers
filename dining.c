@@ -17,7 +17,7 @@ void	*dining(void *philo_arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_arg;
-	philo->last_eat_time = current_time();
+	philo->last_eat_time = current_time() - philo->start_time;
 	if (philo->philo_id % 2 == 0)
 	{
 		thinking(philo);
